@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Turnos</title>
+</head>
+<body>
+    <h2>Paciente</h2>
+    <select id="paciente-select" onchange="seleccionarPaciente()">
+        <option value="">Selecciona un paciente</option>
+        <!-- Agrega las opciones de pacientes aquí -->
+    </select>
+
+    <h2>Odontólogo</h2>
+    <select id="odontologo-select" onchange="seleccionarOdontologo()" disabled>
+        <option value="">Selecciona un odontólogo</option>
+        <!-- Agrega las opciones de odontólogos aquí -->
+    </select>
+
+    <h2>Turno</h2>
+    <input type="date" id="fecha" disabled>
+    <input type="time" id="hora" disabled>
+    <button onclick="crearTurno()" disabled>Crear turno</button>
+
+    <script>
+        let turnoData = {
+    paciente: "",
+    odontologo: "",
+    fecha: "",
+    hora: ""
+};
+
+
+/*
+{
+    "paciente": {
+        "id": ,
+        "nombre": "",
+        "apellido": "",
+        "dni": "",
+        "fechaIngreso": "",
+        "domicilio": {
+            "id": ,
+            "calle": "",
+            "numero": "",
+            "localidad": "",
+            "provincia": "",
+            "paciente": null
+        },
+        "turnos": []
+    },
+    "odontologo":{
+        "id": ,
+        "nombre": "",
+        "apellido": "",
+        "matricula": ,
+        "turnos": []
+    },
+    "date": ""
+}
+*/
+
+function seleccionarPaciente() {
+    const pacienteSelect = document.getElementById('paciente');
+    turnoData.paciente = pacienteSelect.value;
+
+    // Habilitar el selector de odontólogo
+    const odontologoSelect = document.getElementById('odontologo');
+    odontologoSelect.disabled = false;
+}
+
+// ... el resto del código sigue igual
+
+
+        function seleccionarOdontologo() {
+            const odontologoSelect = document.getElementById('odontologo');
+            turnoData.odontologo = odontologoSelect.value;
+
+            // Habilitar los campos de fecha y hora
+            const fechaInput = document.getElementById('fecha');
+            fechaInput.disabled = false;
+            const horaInput = document.getElementById('hora');
+            horaInput.disabled = false;
+
+            // Habilitar el botón de crear turno
+            const crearTurnoButton = document.querySelector('button');
+            crearTurnoButton.disabled = false;
+        }
+
+        function crearTurno() {
+            const fechaInput = document.getElementById('fecha');
+            const horaInput = document.getElementById('hora');
+            turnoData.fecha = fechaInput.value;
+            turnoData.hora = horaInput.value;
+
+            // Enviar datos al back-end
+            fetch('/ruta-api', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(turnoData),
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Turno creado:', data);
+            })
+            .catch(error => {
+                console.error('Error creando turno:', error);
+            });
+        }
+    </script>
+    <script src="fetch.js"></script>
+</body>
+</html>
