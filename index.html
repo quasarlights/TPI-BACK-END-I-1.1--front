@@ -4,9 +4,15 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Turnos</title>
+    <title>Clinica Odontlogica</title>
 </head>
 <body>
+    <div class="nav">
+        <a href="paciente.html">Paciente</a>
+        <a href="odontologo.html">Odontologo</a>
+        <a href="turno.html">Turno</a>
+    </div>
+    <h1>Sacar Turno</h1>
     <h2>Paciente</h2><!--onchange="seleccionarPaciente()"-->
     <select id="paciente-select" >
         <option value="">Selecciona un paciente</option>
@@ -23,6 +29,8 @@
     <input type="date" id="fecha" disabled>
     <input type="time" id="hora" disabled>
     <button type="submit" id="turnoBtn" disabled>Crear turno</button>
+
+    <div id="turno"><h3>...</h3></div>
 
     
     <script src="turno.js"></script>

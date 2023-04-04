@@ -49,4 +49,4 @@ pacienteSelect.addEventListener('change', ()=>{
 
 });
 
-
+///////////////////////////////////////////////////
