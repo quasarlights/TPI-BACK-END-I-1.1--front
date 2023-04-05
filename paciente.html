@@ -20,7 +20,7 @@
         <button id="deletePacienteBTN">Borrar Paciente</button>
 
         <!--FORM CREATE-->
-        <form id="paciente-form" style="display: none;">
+        <form id="paciente-create-form" style="display: none;">
             <h2>Cargar Paciente</h2>
             <label for="nombre">Nombre:</label>
             <input type="text" id="nombre" name="nombre" required><br>
@@ -49,7 +49,41 @@
     
             <input type="submit" value="Enviar">
         </form>
+
+        <!--FORM UPDATE-->
+        <form id="paciente-update-form" style="display: none;">
+            <h2>Cargar Paciente</h2>
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" name="nombre"  disabled><br>
+    
+            <label for="apellido">Apellido:</label>
+            <input type="text" id="apellido" name="apellido"  disabled><br>
+    
+            <label for="dni">DNI:</label>
+            <input type="text" id="dni" name="dni" required disabled><br>
+    
+            <label for="fechaIngreso">Fecha de Ingreso:</label>
+            <input type="date" id="fechaIngreso" name="fechaIngreso" required disabled><br>
+    
+            <h3>Domicilio</h3>
+            <label for="calle">Calle:</label>
+            <input type="text" id="calle" name="calle" required disabled><br>
+    
+            <label for="numero">Número:</label>
+            <input type="text" id="numero" name="numero" required disabled><br>
+    
+            <label for="localidad">Localidad:</label>
+            <input type="text" id="localidad" name="localidad" required disabled><br>
+    
+            <label for="provincia">Provincia:</label>
+            <input type="text" id="provincia" name="provincia" required disabled><br>
+    
+            <input type="submit" value="Enviar">
+        </form>
         
     <script src="paciente1.js"></script>
+    <script src="paciente2.js"></script>
+    <script src="paciente3.js"></script>
+    
 </body>
 </html>

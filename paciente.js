@@ -1,4 +1,4 @@
-//CARGAR PACIENTES
+//////////////////CARGAR PACIENTES PARA NUEVO TURNO//////////////////////////
 
 window.addEventListener('load', traerPacientes())
 
