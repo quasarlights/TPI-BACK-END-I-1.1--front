@@ -51,34 +51,41 @@
         </form>
 
         <!--FORM UPDATE-->
+        <form id="give-id-form" style="display: none;">
+            <label for="id">Suministrar ID:</label>
+            <input type="text" id="id" name="id"><br>
+            <button type="submit" id="send-id">Send ID</button>
+        </form>
+
         <form id="paciente-update-form" style="display: none;">
-            <h2>Cargar Paciente</h2>
+            <h2>Paciente a modificar</h2>
+            
             <label for="nombre">Nombre:</label>
-            <input type="text" id="nombre" name="nombre"  disabled><br>
+            <input type="text" id="nombre-up" name="nombre"><br>
     
             <label for="apellido">Apellido:</label>
-            <input type="text" id="apellido" name="apellido"  disabled><br>
+            <input type="text" id="apellido-up" name="apellido"><br>
     
             <label for="dni">DNI:</label>
-            <input type="text" id="dni" name="dni" required disabled><br>
+            <input type="text" id="dni" name="dni-up" required><br>
     
             <label for="fechaIngreso">Fecha de Ingreso:</label>
-            <input type="date" id="fechaIngreso" name="fechaIngreso" required disabled><br>
+            <input type="date" id="fechaIngreso-up" name="fechaIngreso" required><br>
     
             <h3>Domicilio</h3>
             <label for="calle">Calle:</label>
-            <input type="text" id="calle" name="calle" required disabled><br>
+            <input type="text" id="calle-up" name="calle" required><br>
     
             <label for="numero">Número:</label>
-            <input type="text" id="numero" name="numero" required disabled><br>
+            <input type="text" id="numero-up" name="numero" required><br>
     
             <label for="localidad">Localidad:</label>
-            <input type="text" id="localidad" name="localidad" required disabled><br>
+            <input type="text" id="localidad-up" name="localidad" required><br>
     
             <label for="provincia">Provincia:</label>
-            <input type="text" id="provincia" name="provincia" required disabled><br>
+            <input type="text" id="provincia-up" name="provincia" required><br>
     
-            <input type="submit" value="Enviar">
+            <button id="send-upload-btn" type="submit">Modificar</button>
         </form>
         
     <script src="paciente1.js"></script>
