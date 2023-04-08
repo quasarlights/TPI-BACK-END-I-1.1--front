@@ -9,6 +9,7 @@
 <body>
     <div class="nav">
         <a href="index.html">Sacar Turno</a>
+        <a href="paciente.html">Paciente</a>
         <a href="odontologo.html">Odontologo</a>
         <a href="turno.html">Turno</a>
     </div>
@@ -58,39 +59,52 @@
         </form>
 
         <form id="paciente-update-form" style="display: none;">
-            <h2>Paciente a modificar</h2>
-            
+            <h2>Cargar Paciente</h2>
+            <label for="id">ID:</label>
+            <input type="text" id="id-up" name="id" hidden><br>
+
             <label for="nombre">Nombre:</label>
-            <input type="text" id="nombre-up" name="nombre"><br>
+            <input type="text" id="nombre-up" name="nombre" required><br>
     
             <label for="apellido">Apellido:</label>
-            <input type="text" id="apellido-up" name="apellido"><br>
+            <input type="text" id="apellido-up" name="apellido" required><br>
     
             <label for="dni">DNI:</label>
-            <input type="text" id="dni" name="dni-up" required><br>
+            <input type="text" id="dni-up" name="dni" required><br>
     
             <label for="fechaIngreso">Fecha de Ingreso:</label>
             <input type="date" id="fechaIngreso-up" name="fechaIngreso" required><br>
     
             <h3>Domicilio</h3>
             <label for="calle">Calle:</label>
-            <input type="text" id="calle-up" name="calle" required><br>
+            <input type="text" id="calle-up" name="domicilio.calle" required><br>
     
             <label for="numero">Número:</label>
-            <input type="text" id="numero-up" name="numero" required><br>
+            <input type="text" id="numero-up" name="domicilio.numero" required><br>
     
             <label for="localidad">Localidad:</label>
-            <input type="text" id="localidad-up" name="localidad" required><br>
+            <input type="text" id="localidad-up" name="domicilio.localidad" required><br>
     
             <label for="provincia">Provincia:</label>
-            <input type="text" id="provincia-up" name="provincia" required><br>
+            <input type="text" id="provincia-up" name="domicilio.provincia" required><br>
     
-            <button id="send-upload-btn" type="submit">Modificar</button>
+            <input id="modificar-btn" type="submit" value="Modificar">
+        </form> 
+
+        <!--FORM DELETE-->
+        <form id="give-id-form-delete" style="display: none;">
+            <label for="id">Suministrar ID:</label>
+            <input type="text" id="give-id-delete" name="id" required><br>
+            <button type="submit" id="send-delete-id">Send ID</button>
         </form>
+
+        <div id="delete-div-response"></div>
+        <button type="submit" id='delete-btn' hidden>Eliminar</button>        
         
     <script src="paciente1.js"></script>
     <script src="paciente2.js"></script>
     <script src="paciente3.js"></script>
+    <script src="paciente4.js"></script>
     
 </body>
 </html>

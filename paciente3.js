@@ -1,12 +1,28 @@
 /////////////////////UPDATE PACIENTE/////////////////
 
-const pacienteUpdateForm = document.getElementById("paciente-create-form")
+const pacienteUpdateForm = document.getElementById("paciente-update-form")
 const updatePacienteBTN = document.getElementById("updatePacienteBTN")
 const sendIdBTN = document.getElementById("send-id")
 const giveIdForm= document.getElementById("give-id-form")
 const sendUploadBtn= document.getElementById("send-upload-btn")
+const modificarBtn= document.getElementById("modificar-btn")
 
-let pacienteIdData= {}
+let pacienteIdData= {
+        
+  "nombre": "",
+  "apellido": "",
+  "dni": "",
+  "fechaIngreso": "",
+  "domicilio": {
+      
+      "calle": "",
+      "numero": "",
+      "localidad": "",
+      "provincia": "",
+      "paciente": null
+  },
+  "turnos": []
+}
 
 updatePacienteBTN.addEventListener('click', ()=>{
   giveIdForm.style.display= "block"
@@ -37,6 +53,7 @@ async function traerPacientesPorID() {
 
           if (response.ok) {
               const paciente = await response.json();
+              console.log(paciente);
               pacienteIdData = paciente;
           } else {
               throw new Error('Error al obtener los datos del paciente.');
@@ -50,14 +67,15 @@ async function traerPacientesPorID() {
 } 
 
 function cargarValoresFormulario() {
-  document.getElementById("nombre").value = pacienteIdData.nombre;
-  document.getElementById("apellido").value = pacienteIdData.apellido;
-  document.getElementById("dni").value = pacienteIdData.dni;
-  document.getElementById("fechaIngreso").value = pacienteIdData.fechaIngreso;
-  document.getElementById("calle").value = pacienteIdData.domicilio.calle;
-  document.getElementById("numero").value = pacienteIdData.domicilio.numero;
-  document.getElementById("localidad").value = pacienteIdData.domicilio.localidad;
-  document.getElementById("provincia").value = pacienteIdData.domicilio.provincia;
+  document.getElementById("id-up").value = pacienteIdData.id;
+  document.getElementById("nombre-up").value = pacienteIdData.nombre;
+  document.getElementById("apellido-up").value = pacienteIdData.apellido;
+  document.getElementById("dni-up").value = pacienteIdData.dni;
+  document.getElementById("fechaIngreso-up").value = pacienteIdData.fechaIngreso;
+  document.getElementById("calle-up").value = pacienteIdData.domicilio.calle;
+  document.getElementById("numero-up").value = pacienteIdData.domicilio.numero;
+  document.getElementById("localidad-up").value = pacienteIdData.domicilio.localidad;
+  document.getElementById("provincia-up").value = pacienteIdData.domicilio.provincia;
 }
 
 function fechaToString() {
@@ -72,3 +90,64 @@ const fecha = fechaObj.toISOString().slice(0, 10);
 pacienteIdData.fechaIngreso= fecha;
 console.log(fecha); 
 }
+modificarBtn.addEventListener('click', (e) => {
+  e.preventDefault();
+
+  formData = new FormData(pacienteUpdateForm);
+  console.log(formData);
+
+  for (const [key, value] of formData.entries()) {
+    if (key.includes('.')) {
+      const [parentKey, childKey] = key.split('.');
+      pacienteIdData[parentKey][childKey] = value;
+    } else {
+      pacienteIdData[key] = value;
+    }
+  }
+
+  console.log(pacienteIdData);
+
+  fetch('http://localhost:8080/pacientes', {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(pacienteIdData),
+  })
+    .then((response) => response.json())
+    .then((response) => console.log(response));
+});
+
+/*
+modificarBtn.addEventListener('click', (e)=>{
+  e.preventDefault();
+    
+  formData= new FormData(pacienteUpdateForm)
+  console.log(formData);
+
+  const data = {
+    domicilio: {},
+  };
+
+  for (const [key, value] of formData.entries()) {
+    // Si el key contiene un punto, significa que es un campo anidado
+    if (key.includes('.')) {
+      const [parentKey, childKey] = key.split('.');
+      data[parentKey][childKey] = value;
+    } else {
+      data[key] = value;
+    }
+  }
+  console.log(data);
+  fetch('http://localhost:8080/pacientes',{
+    method: 'PUT',
+    headers: {
+        'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(data)
+})
+.then(response=> response.json)
+.then(console.log(response))
+  
+})
+*/
