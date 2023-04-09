@@ -2,7 +2,20 @@
 
 let readPacienteBTN =document.getElementById("readPacienteBTN")
 
-readPacienteBTN.addEventListener('click', traerPacientes)
+readPacienteBTN.addEventListener('click', ()=>{
+    //
+    traerPacientes() 
+    hideUI()   
+    //resetUI()
+})
+function hideUI() {
+    readPacienteBTN.disabled = true
+    createPacienteBTN.hidden = true 
+    updatePacienteBTN.hidden = true
+    deletePacienteBTN.hidden = true
+    //pacienteForm.style.display= 'block'
+}
+  
 
 function traerPacientes() {    
 

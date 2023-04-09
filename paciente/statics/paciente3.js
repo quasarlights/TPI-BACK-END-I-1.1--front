@@ -26,7 +26,25 @@ let pacienteIdData= {
 
 updatePacienteBTN.addEventListener('click', ()=>{
   giveIdForm.style.display= "block"
+  hideUI()
+  
 })
+
+function hideUI() {
+  updatePacienteBTN.disabled = true
+  createPacienteBTN.hidden = true 
+  readPacienteBTN.hidden = true
+  deletePacienteBTN.hidden = true
+  //pacienteForm.style.display= 'block'
+}
+
+function resetUI() {
+  updatePacienteBTN.disabled = false;
+  createPacienteBTN.hidden = false;
+  readPacienteBTN.hidden = false;
+  deletePacienteBTN.hidden = false;
+  pacienteUpdateForm.style.display = 'none';
+}
 
 
 sendIdBTN.addEventListener('click', async (e)=>{
@@ -92,7 +110,7 @@ console.log(fecha);
 }
 modificarBtn.addEventListener('click', (e) => {
   e.preventDefault();
-
+  
   formData = new FormData(pacienteUpdateForm);
   console.log(formData);
 
@@ -115,8 +133,10 @@ modificarBtn.addEventListener('click', (e) => {
     body: JSON.stringify(pacienteIdData),
   })
     .then((response) => response.json())
-    .then((response) => console.log(response));
-});
+    .then((response) => alert('Paciente '+response.nombre+' '+response.apellido+' actualizado!'));
+
+    resetUI()
+  });
 
 /*
 modificarBtn.addEventListener('click', (e)=>{

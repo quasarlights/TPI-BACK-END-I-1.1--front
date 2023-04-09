@@ -9,8 +9,17 @@ const giveIdDelete= document.getElementById('give-id-delete')
 
 deleteSeccionBtn.addEventListener('click', ()=>{
     deleteIdForm.style.display= "block"
+    hideUI()
     
 })
+
+function hideUI() {
+  deletePacienteBTN.disabled = true
+  createPacienteBTN.hidden = true 
+  updatePacienteBTN.hidden = true
+  readPacienteBTN.hidden = true
+  //pacienteForm.style.display= 'block'
+}
 
 
 deleteIdBtn.addEventListener('click', (e) => {
@@ -64,12 +73,23 @@ deleteIdBtn.addEventListener('click', (e) => {
             }
         })
         .then(data=> {
-            deleteDivResponse.innerHTML = data;
+            alert(data);
         })
     } catch (error) {
         console.error('Error: '+ error);
+    }finally{
+      location.reload();
     }
   })
 
-
+function resetDeletePacienteUI() {
+    console.log("resetUI() called"); // Agrega esta línea
+    deleteDivResponse.innerHTML = "";
+    createPacienteBTN.disabled = false;
+    readPacienteBTN.hidden = false;
+    updatePacienteBTN.hidden = false;
+    deletePacienteBTN.hidden = false;
+    deleteIdForm.style.display = 'none';
+    deleteBtn.hidden=true;
+  }
 

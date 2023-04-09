@@ -12,6 +12,7 @@ createPacienteBTN.addEventListener('click', function(){
   deletePacienteBTN.hidden = true
   pacienteForm.style.display= 'block'
 
+
 })
 
 
@@ -57,6 +58,7 @@ pacienteForm.addEventListener('submit', (e)=>{
     cleanObject()
     console.log(cleanObject());
     crearPaciente() 
+    //resetUI()
     
 })
 
@@ -79,25 +81,31 @@ function cleanObject(){
   
     //const datos= new FormData(pacienteData)
     //console.log(datos);
-    function crearPaciente(){
-    let cleanedData = cleanObject();
-
-    fetch('http://localhost:8080/pacientes', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(cleanedData)
-    })
-    .then(response=> response.json())
-    .then(response=>{
-        console.log(response);
-        alert("Paciente Creado: "+ response.nombre+" "+response.apellido)
-    })
-    .catch(error=>{
-        console.error(error);
-    })
-}
+    function crearPaciente() {
+        let cleanedData = cleanObject();
+    
+        fetch('http://localhost:8080/pacientes', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(cleanedData)
+        })
+        .then(response => response.json())
+        .then(response => {
+            console.log(response);
+            alert("Paciente Creado: " + response.nombre + " " + response.apellido);
+        })
+        .catch(error => {
+            console.error(error);
+        })
+        .finally(() => { // Agrega el bloque finally()
+            console.log("Before calling resetUI()");
+            resetCreatePacienteUI();
+            console.log("After calling resetUI()");
+        });
+    }
+    
 
 function setNullsValues(){
     try{pacienteData.domicilio.paciente= "null";}
@@ -149,4 +157,12 @@ fechaIngreso.addEventListener('change', ()=>{
     
     }
 
-   
+   function resetCreatePacienteUI   () {
+    console.log("resetUI() called"); // Agrega esta línea
+    createPacienteBTN.disabled = false;
+    readPacienteBTN.hidden = false;
+    updatePacienteBTN.hidden = false;
+    deletePacienteBTN.hidden = false;
+    pacienteForm.style.display = 'none';
+  }
+  
