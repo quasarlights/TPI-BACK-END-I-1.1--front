@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clinica Odontlogica</title>
+</head>
+<body>
+    <div class="nav">
+        <a href="../../index.html">Home</a>
+        <a href="../../paciente/template/paciente.html">Paciente</a>
+        <a href="../../odontologo/template/odontologo.html">Odontologo</a>
+        <a href="turno.html">Turno</a>
+    </div>
+    <h1>Turnos</h1>
+    <h2>Paciente</h2><!--onchange="seleccionarPaciente()"-->
+    <select id="paciente-select" >
+        <option value="">Selecciona un paciente</option>
+        <!-- Agrega las opciones de pacientes aquí -->
+    </select>
+
+    <h2>Odontólogo</h2>
+    <select id="odontologo-select" disabled>
+        <option value="">Selecciona un odontólogo</option>
+        <!-- Agrega las opciones de odontólogos aquí -->
+    </select>
+
+    <h2>Turno</h2>
+    <input type="date" id="fecha" disabled>
+    <input type="time" id="hora" disabled>
+    <button type="submit" id="turnoBtn" disabled>Crear turno</button>
+
+    <div id="turno"><h3>...</h3></div>
+
+    
+    <script src="../statics/turno.js"></script>
+    <script src="../statics/paciente.js"></script>
+    <script src="../statics/odontologo.js"></script>
+    <script src="../statics/fechaYHora.js"></script>
+</body>
+</html>
