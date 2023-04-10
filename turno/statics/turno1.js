@@ -1,5 +1,5 @@
-const turnoPacienteBTN = document.getElementById("turnoPacienteBTN");
+const createTurnoBTN = document.getElementById("turnoPacienteBTN");
 
-turnoPacienteBTN.addEventListener("click", () => {
+createTurnoBTN.addEventListener("click", () => {
   window.location.href = "sacarTurno.html";
 });

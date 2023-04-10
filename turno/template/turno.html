@@ -21,37 +21,7 @@
         <button id="updateTurnoBTN">Modificar Turno</button>
         <button id="deleteTurnoBTN">Borrar Turno</button>
 
-        <!--FORM CREATE-->
-        <form id="paciente-create-form" style="display: none;">
-            <h2>Cargar Paciente</h2>
-            <label for="nombre">Nombre:</label>
-            <input type="text" id="nombre" name="nombre" required><br>
-    
-            <label for="apellido">Apellido:</label>
-            <input type="text" id="apellido" name="apellido" required><br>
-    
-            <label for="dni">DNI:</label>
-            <input type="text" id="dni" name="dni" required><br>
-    
-            <label for="fechaIngreso">Fecha de Ingreso:</label>
-            <input type="date" id="fechaIngreso" name="fechaIngreso" required><br>
-    
-            <h3>Domicilio</h3>
-            <label for="calle">Calle:</label>
-            <input type="text" id="calle" name="calle" required><br>
-    
-            <label for="numero">Número:</label>
-            <input type="text" id="numero" name="numero" required><br>
-    
-            <label for="localidad">Localidad:</label>
-            <input type="text" id="localidad" name="localidad" required><br>
-    
-            <label for="provincia">Provincia:</label>
-            <input type="text" id="provincia" name="provincia" required><br>
-    
-            <input type="submit" value="Enviar">
-        </form>
-
+        
         <!--FORM UPDATE-->
         <form id="give-id-form" style="display: none;">
             <label for="id">Suministrar ID:</label>
@@ -59,36 +29,23 @@
             <button type="submit" id="send-id">Send ID</button>
         </form>
 
-        <form id="paciente-update-form" style="display: none;">
+        <form id="turno-update-form" style="display: none;">
             <h2>Cargar Paciente</h2>
             <label for="id">ID:</label>
             <input type="text" id="id-up" name="id" hidden><br>
 
-            <label for="nombre">Nombre:</label>
-            <input type="text" id="nombre-up" name="nombre" required><br>
+            <label for="nombre">Paciente:</label>
+            <input type="text" id="nombre-up" name="nombre" disabled><br>
     
-            <label for="apellido">Apellido:</label>
-            <input type="text" id="apellido-up" name="apellido" required><br>
+            <label for="apellido">Odontologo:</label>
+            <input type="text" id="apellido-up" name="apellido" disabled><br>
     
-            <label for="dni">DNI:</label>
-            <input type="text" id="dni-up" name="dni" required><br>
-    
-            <label for="fechaIngreso">Fecha de Ingreso:</label>
-            <input type="date" id="fechaIngreso-up" name="fechaIngreso" required><br>
-    
-            <h3>Domicilio</h3>
-            <label for="calle">Calle:</label>
-            <input type="text" id="calle-up" name="domicilio.calle" required><br>
-    
-            <label for="numero">Número:</label>
-            <input type="text" id="numero-up" name="domicilio.numero" required><br>
-    
-            <label for="localidad">Localidad:</label>
-            <input type="text" id="localidad-up" name="domicilio.localidad" required><br>
-    
-            <label for="provincia">Provincia:</label>
-            <input type="text" id="provincia-up" name="domicilio.provincia" required><br>
-    
+            <label for="date">Fecha:</label>
+            <input type="date" id="date-up" name="date" required><br>
+
+            <label for="time">Fecha:</label>
+            <input type="time" id="time-up" name="time" required><br>
+                   
             <input id="modificar-btn" type="submit" value="Modificar">
         </form> 
 
